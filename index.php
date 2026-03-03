@@ -1,9 +1,5 @@
 <?php
-
-// index.php
-
-require_once __DIR__ . "/read.php"; // dobije: $users, $search, $page, $totalPages, $total
-
+require_once __DIR__ . "/read.php";
 ?>
 <!doctype html>
 <html lang="bs">
@@ -16,18 +12,19 @@ require_once __DIR__ . "/read.php"; // dobije: $users, $search, $page, $totalPag
 </head>
 <body class="bg-light">
 <div class="container py-4">
-<div class="d-flex justify-content-between align-items-center mb-3">
-<h2 class="mb-0">User Management (CRUD)</h2>
+<div class="d-flex justify-content-end align-items-center mb-3">
 <span class="badge bg-secondary">Ukupno: <?php echo (int)$total; ?></span>
 </div>
 <?php if (!empty($_GET["msg"])): ?>
-<div class="alert alert-info"><?php echo e((string)$_GET["msg"]); ?></div>
+<div class="alert alert-info py-2 mb-3">
+<?php echo e((string)$_GET["msg"]); ?>
+</div>
 <?php endif; ?>
 <div class="row g-3">
 <div class="col-md-4">
 <div class="card shadow-sm">
 <div class="card-body">
-<h5 class="card-title">Dodaj korisnika</h5>
+<h5 class="card-title mb-3">Dodaj korisnika</h5>
 <form method="post" action="create.php" novalidate>
 <div class="mb-2">
 <label class="form-label">Ime</label>
@@ -49,15 +46,13 @@ require_once __DIR__ . "/read.php"; // dobije: $users, $search, $page, $totalPag
 <div class="col-md-8">
 <div class="card shadow-sm">
 <div class="card-body">
-<div class="d-flex gap-2 justify-content-between align-items-center mb-3">
-<form class="d-flex gap-2" method="get" action="index.php">
+<form class="d-flex gap-2 mb-3" method="get" action="index.php">
 <input class="form-control" name="search" placeholder="Pretraga..." value="<?php echo e($search); ?>">
 <button class="btn btn-outline-primary">Traži</button>
 <a class="btn btn-outline-secondary" href="index.php">Reset</a>
 </form>
-</div>
 <div class="table-responsive">
-<table class="table table-striped align-middle">
+<table class="table table-striped align-middle mb-3">
 <thead>
 <tr>
 <th>ID</th>
@@ -94,11 +89,7 @@ require_once __DIR__ . "/read.php"; // dobije: $users, $search, $page, $totalPag
 </div>
 <nav>
 <ul class="pagination mb-0">
-<?php
-
-                $q = ($search !== "") ? "&search=" . urlencode($search) : "";
-
-              ?>
+<?php $q = ($search !== "") ? "&search=" . urlencode($search) : ""; ?>
 <li class="page-item <?php echo $page <= 1 ? 'disabled' : ''; ?>">
 <a class="page-link" href="index.php?page=<?php echo max(1, $page-1).$q; ?>">Prethodna</a>
 </li>
@@ -120,4 +111,3 @@ require_once __DIR__ . "/read.php"; // dobije: $users, $search, $page, $totalPag
 <script src="assets/script.js"></script>
 </body>
 </html>
- 
