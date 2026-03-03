@@ -1,6 +1,6 @@
 # php-mysql-backend
 
-**Ime i prezime studenta:** (upiši ovdje)  
+**Ime i prezime studenta:** Uma Kolić 
 
 **Naziv predmeta:** Softver inženjering  
 
@@ -19,4 +19,5 @@
 ## Screenshot aplikacije
 
 (Dodaj screenshot ovdje)
+
  
